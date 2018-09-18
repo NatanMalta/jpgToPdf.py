@@ -36,7 +36,3 @@ if not path.exists(nomePdf+'.pdf'):
 
 for Pdf in pdfs: # Apaga as imagens convertida em .pdf
     remove(Pdf)
-
-
-
-
