@@ -5,10 +5,10 @@ from PyPDF2 import PdfFileReader, PdfFileMerger
 
 nomePdf = str(input('Nome para salvar o pdf: '))
 apenasJpg = [f for f in listdir() if f.lower().endswith("jpg")] # Lista apenas arquivos .jpg
-apenasJpg.sort()
+apenasJpg.sort() # Organiza a lista em ordem Alfanumérica
 pdfs = [] 
 
-for jpg in apenasJpg: 
+for jpg in apenasJpg: # Faz a conversão .jpg para .pdf
     imagem = Image.open(jpg)
 
     if imagem.mode == "RGBA": # Converte imagens RGBA para RGB
@@ -20,11 +20,11 @@ for jpg in apenasJpg:
     if not path.exists(novoPdf): # Se não existir ele salva o .pdf
         imagem.save(novoPdf, "PDF", resolution=100.0)
 
-if not path.exists(nomePdf+'.pdf'):
+if not path.exists(nomePdf+'.pdf'): 
     pdfs.sort() # Organiza a lista em ordem Alfanumérica
     merger = PdfFileMerger()
     
-    for pdf in pdfs:
+    for pdf in pdfs: # Junta todos os .pdf
         merger.append(PdfFileReader(path.join(pdf), 'rb'))
     merger.write(path.join(nomePdf+'.pdf'))
 
